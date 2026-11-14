@@ -1,0 +1,8 @@
+{
+  "name": "Cadence — Mental Math Trainer",
+  "description": "100% client-side mental arithmetic training with timed drills, voice read-aloud, handwriting recognition, CSV export, and comparative analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
