@@ -103,7 +103,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         setPrepError(
           err instanceof Error
             ? `Failed to initialize handwriting engine: ${err.message}`
-            : 'Failed to initialize handwriting engine. Check your network connection for Tesseract worker assets.'
+            : 'Failed to initialize handwriting engine.'
         );
         return;
       }

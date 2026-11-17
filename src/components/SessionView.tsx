@@ -328,11 +328,12 @@ export const SessionView: React.FC<SessionViewProps> = ({
     lastPointRef.current = pt;
     midPointRef.current = pt;
 
+    const strokeW = Math.max(12, Math.min(22, Math.round(canvas.height * 0.04)));
     const ctx = canvas.getContext('2d');
     if (ctx) {
       ctx.fillStyle = '#000000';
       ctx.beginPath();
-      ctx.arc(pt.x, pt.y, 7, 0, Math.PI * 2);
+      ctx.arc(pt.x, pt.y, strokeW / 2, 0, Math.PI * 2);
       ctx.fill();
     }
   };
@@ -352,9 +353,10 @@ export const SessionView: React.FC<SessionViewProps> = ({
       x: (last.x + pt.x) / 2,
       y: (last.y + pt.y) / 2,
     };
+    const strokeW = Math.max(12, Math.min(22, Math.round(canvas.height * 0.04)));
 
     ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 14;
+    ctx.lineWidth = strokeW;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.beginPath();
@@ -374,9 +376,10 @@ export const SessionView: React.FC<SessionViewProps> = ({
     const ctx = canvas?.getContext('2d');
     const last = lastPointRef.current;
     const prevMid = midPointRef.current;
-    if (ctx && last && prevMid) {
+    if (canvas && ctx && last && prevMid) {
+      const strokeW = Math.max(12, Math.min(22, Math.round(canvas.height * 0.04)));
       ctx.strokeStyle = '#000000';
-      ctx.lineWidth = 14;
+      ctx.lineWidth = strokeW;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.beginPath();
@@ -510,6 +513,15 @@ export const SessionView: React.FC<SessionViewProps> = ({
               className="block w-full h-full cursor-crosshair bg-white"
               aria-label="Handwriting answer pad"
             />
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-8 top-[74%] border-t border-dashed border-slate-200 flex justify-center"
+            >
+              <span className="mt-2 text-[11px] text-slate-300">
+                Write digits side-by-side
+              </span>
+            </div>
 
             <button
               type="button"
